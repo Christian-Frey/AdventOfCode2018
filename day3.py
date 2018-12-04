@@ -25,12 +25,12 @@ def day_03():
 
     num_find = re.compile("\d+")
     claims = []
-    for c in lines:
-        claim_split = num_find.findall(c)
-        claims.append(Claim(*claim_split))
+    full_cloth = np.zeros((1000, 1000))
+    for l in lines:
+        claim_split = num_find.findall(l)
+        c = Claim(*claim_split)
+        claims.append(c)
 
-    full_cloth = np.zeros((2000, 2000))
-    for c in claims:
         # Define a window in the numpy array. Then add that window to the ones
         # array we created earlier, so we slowly add up the squares.
         full_cloth[c.start_x : c.end_x, c.start_y : c.end_y] = (
